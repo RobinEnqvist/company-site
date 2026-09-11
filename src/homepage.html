@@ -1,0 +1,444 @@
+<title>We Make Ourselves Unnecessary</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#E4E3DE;
+  --panel:#EFEEEA;
+  --ink:#15161A;
+  --ink-mid:#4A4C54;
+  --ink-soft:#72747C;
+  --rule:#C2C1BA;
+  --rule-hard:#15161A;
+  --tag:#F2C400;
+  --tag-ink:#15161A;
+  --hatch:#C9C8C1;
+  --slot:#DCDBD5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#121316;
+    --panel:#191B1F;
+    --ink:#EDECE7;
+    --ink-mid:#A8AAB2;
+    --ink-soft:#83858D;
+    --rule:#32343A;
+    --rule-hard:#EDECE7;
+    --tag:#F2C400;
+    --tag-ink:#15161A;
+    --hatch:#2A2C31;
+    --slot:#1D1F23;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#121316;
+  --panel:#191B1F;
+  --ink:#EDECE7;
+  --ink-mid:#A8AAB2;
+  --ink-soft:#83858D;
+  --rule:#32343A;
+  --rule-hard:#EDECE7;
+  --tag:#F2C400;
+  --tag-ink:#15161A;
+  --hatch:#2A2C31;
+  --slot:#1D1F23;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+
+/* ---------- type roles ---------- */
+.display{
+  font-family:Archivo,"Arial Narrow",system-ui,sans-serif;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:-.028em;
+  line-height:.92;
+  text-wrap:balance;
+  margin:0;
+}
+.mono{
+  font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+.lede{font-size:17px;line-height:1.62;color:var(--ink-mid);max-width:58ch;margin:0}
+p{margin:0}
+
+/* ---------- header ---------- */
+header{border-bottom:1px solid var(--rule)}
+.bar{
+  display:flex;align-items:center;gap:28px;
+  min-height:62px;
+}
+.mark{
+  font-family:Archivo,sans-serif;font-weight:900;font-size:17px;
+  letter-spacing:.02em;text-transform:uppercase;color:var(--ink);
+  text-decoration:none;white-space:nowrap;
+}
+.mark .ph{
+  border:1px dashed var(--ink-soft);padding:2px 9px;color:var(--ink-soft);
+  font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;font-weight:400;
+}
+.mark{display:inline-flex;align-items:center;gap:10px}
+.lock{color:var(--ink);flex:none}
+.bar .btn{margin-left:auto}
+.burger{
+  flex:none;width:44px;height:44px;margin-right:-10px;
+  background:none;border:0;cursor:pointer;padding:0;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+}
+.burger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform .18s ease,opacity .18s ease}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.burger:focus-visible{outline:2px solid var(--tag);outline-offset:2px}
+.menu{border-top:1px solid var(--rule);background:var(--panel)}
+.menu-in{display:flex;flex-direction:column;padding:8px 28px 18px}
+.menu a{
+  color:var(--ink);text-decoration:none;
+  font-family:Archivo,sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:22px;letter-spacing:-.01em;padding:12px 0;
+  border-bottom:1px solid var(--rule);
+}
+.menu a:hover,.menu a:focus-visible{color:var(--ink-mid)}
+.wip{
+  align-self:flex-start;margin-top:16px;
+  border:1px dashed var(--ink-soft);color:var(--ink-mid);
+  padding:7px 11px;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--tag);color:var(--tag-ink);
+  font-family:Archivo,sans-serif;font-weight:800;text-transform:uppercase;
+  letter-spacing:.02em;font-size:13px;line-height:1;
+  padding:13px 18px;text-decoration:none;border:1px solid var(--rule-hard);
+  transition:transform .12s ease;
+}
+.btn:hover,.btn:focus-visible{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--rule-hard)}
+.btn.lg{font-size:16px;padding:19px 26px}
+
+/* ---------- section grid ---------- */
+section{border-bottom:1px solid var(--rule)}
+.grid{
+  display:grid;grid-template-columns:8.5rem minmax(0,1fr);
+  gap:0 40px;padding:78px 0;
+}
+.tick{color:var(--ink-soft);padding-top:5px}
+.col{display:flex;flex-direction:column;gap:26px;min-width:0}
+
+/* ---------- hero ---------- */
+.hero{padding:74px 0 64px;display:flex;flex-direction:column;gap:34px}
+.hero h1{font-size:clamp(38px,7.4vw,86px);max-width:15ch}
+.spec{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--ink-soft)}
+.spec b{color:var(--ink);font-weight:500}
+
+/* strike list */
+.jobs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;max-width:42ch}
+.jobs li{
+  position:relative;display:inline-block;width:fit-content;
+  font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1.45;
+  color:var(--ink-mid);padding-right:2px;
+}
+.jobs li::after{
+  content:"";position:absolute;left:0;right:0;top:52%;height:2px;
+  background:var(--ink);transform:scaleX(0);transform-origin:left center;
+  animation:strike .42s cubic-bezier(.6,0,.2,1) forwards;
+}
+.jobs li:nth-child(1)::after{animation-delay:.45s}
+.jobs li:nth-child(2)::after{animation-delay:.75s}
+.jobs li:nth-child(3)::after{animation-delay:1.05s}
+.jobs li:nth-child(4)::after{animation-delay:1.35s}
+.jobs li:nth-child(5)::after{animation-delay:1.65s}
+@keyframes strike{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){
+  .jobs li::after{animation:none;transform:scaleX(1)}
+  .btn{transition:none}
+}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
+.cta-note{color:var(--ink-soft);font-size:13px;max-width:30ch;line-height:1.45}
+
+/* ---------- headings ---------- */
+h2{font-size:clamp(27px,3.6vw,42px);max-width:19ch}
+h3{
+  font-family:Archivo,sans-serif;font-weight:800;text-transform:uppercase;
+  letter-spacing:-.01em;font-size:17px;margin:0;line-height:1.15;
+}
+
+/* ---------- work slots ---------- */
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:14px}
+.slot{
+  aspect-ratio:16/10;border:1px solid var(--rule);background:var(--slot);
+  background-image:repeating-linear-gradient(45deg,transparent 0 9px,var(--hatch) 9px 10px);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:14px;gap:3px;
+}
+.slot .mono{color:var(--ink-soft)}
+.slot .n{font-family:Archivo,sans-serif;font-weight:900;font-size:15px;color:var(--ink-mid)}
+
+/* ---------- them / us ---------- */
+.versus{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border:1px solid var(--rule)}
+.vs-col{padding:22px}
+.vs-col + .vs-col{border-left:1px solid var(--rule)}
+.vs-col h3{margin-bottom:16px}
+.vs-col.us{background:var(--panel)}
+.vs-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.vs-col li{font-size:14.5px;line-height:1.4;color:var(--ink-mid);padding-left:20px;position:relative}
+.vs-col li::before{
+  content:"—";position:absolute;left:0;top:0;color:var(--ink-soft);
+  font-family:"IBM Plex Mono",monospace;
+}
+.vs-col.us li::before{content:"+";color:var(--ink)}
+.vs-col.us li{color:var(--ink)}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;border-top:1px solid var(--rule-hard)}
+.step{padding:22px 22px 24px;display:flex;flex-direction:column;gap:11px}
+.step + .step{border-left:1px solid var(--rule)}
+.step .idx{font-family:Archivo,sans-serif;font-weight:900;font-size:34px;line-height:1;color:var(--ink)}
+.step p{font-size:14.5px;color:var(--ink-mid);line-height:1.5}
+.step .out{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule);color:var(--ink-soft)}
+
+/* ---------- stamp ---------- */
+.stamp{
+  display:inline-block;background:var(--tag);color:var(--tag-ink);
+  border:1px solid var(--rule-hard);padding:15px 20px;
+  font-family:Archivo,sans-serif;font-weight:900;text-transform:uppercase;
+  font-size:clamp(18px,2.6vw,27px);letter-spacing:-.02em;line-height:1;
+  transform:rotate(-1.4deg);
+}
+
+/* ---------- people ---------- */
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.person{border:1px solid var(--rule);background:var(--panel);padding:16px;display:flex;flex-direction:column;gap:9px}
+.face{
+  aspect-ratio:1;border:1px solid var(--rule);
+  background-image:repeating-linear-gradient(45deg,transparent 0 9px,var(--hatch) 9px 10px);
+}
+.person .mono{color:var(--ink-soft)}
+
+/* ---------- closing ---------- */
+.close{padding:86px 0 96px;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+.close h2{font-size:clamp(30px,5.2vw,58px)}
+
+footer{border-top:1px solid var(--rule);padding:26px 0 44px}
+.foot{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:baseline;color:var(--ink-soft)}
+.foot a{color:var(--ink-soft);text-decoration:none}
+.foot a:hover{color:var(--ink)}
+.foot .sep{margin-left:auto}
+
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3px}
+
+@media (max-width:760px){
+  .grid{grid-template-columns:1fr;gap:18px;padding:54px 0}
+  .tick{padding-top:0}
+  .hero{padding:48px 0 44px}
+  .vs-col + .vs-col{border-left:none;border-top:1px solid var(--rule)}
+  .step + .step{border-left:none;border-top:1px solid var(--rule)}
+  .foot .sep{margin-left:0}
+}
+</style>
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="#top">
+      <svg class="lock" width="15" height="17" viewBox="0 0 15 17" fill="none" aria-hidden="true"><rect x="1" y="7" width="13" height="9" stroke="currentColor" stroke-width="1.6"/><path d="M4 7V4.5a3.5 3.5 0 0 1 7 0V7" stroke="currentColor" stroke-width="1.6"/><rect x="6.6" y="10" width="1.8" height="3" fill="currentColor"/></svg>
+      <span class="ph">[ name ]</span>
+    </a>
+    <a class="btn" href="#worst-job">Send us your worst job</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="menu" id="menu" hidden>
+    <div class="wrap menu-in">
+      <a href="#work">Work</a>
+      <a href="#method">How it works</a>
+      <a href="#built-for">Built for</a>
+      <a href="#who">Who we are</a>
+      <span class="wip mono">Work in progress</span>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section>
+    <div class="wrap hero">
+      <p class="mono" style="color:var(--ink-soft)">Installation + license · No retainers · Cancel any time</p>
+
+      <h1 class="display">Tell us the worst job in your company. We'll delete it.</h1>
+
+      <ul class="jobs">
+        <li>Copying order data between two systems</li>
+        <li>Rewriting the same follow-up email</li>
+        <li>Rebuilding Monday's report by hand</li>
+        <li>Retyping supplier prices into the catalogue</li>
+        <li>Chasing three people for one approval</li>
+      </ul>
+
+      <p class="lede">Somewhere in your business, good people are doing the same task by hand for the hundredth time. Send us that job. We'll show you the machine that ends it — then we hand you the keys and leave.</p>
+
+      <div class="cta-row">
+        <a class="btn lg" href="#worst-job">Send us your worst manual job →</a>
+        <p class="cta-note">Free. One page back: what we'd build, and what it takes off your team.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap grid">
+      <p class="mono tick">01 / Work</p>
+      <div class="col">
+        <h2 class="display">Don't take our word. Watch the machine run.</h2>
+        <p class="lede">Every case answers the same six questions: the job, what it cost, the machine we built, the handover, the footage, the live link. No logo bars. No invented numbers. If we can't show it, we don't claim it.</p>
+        <div class="slots">
+          <div class="slot"><span class="n">01</span><span class="mono">Case film · awaiting asset</span></div>
+          <div class="slot"><span class="n">02</span><span class="mono">Screen recording · awaiting asset</span></div>
+          <div class="slot"><span class="n">03</span><span class="mono">Campaign stills · awaiting asset</span></div>
+          <div class="slot"><span class="n">04</span><span class="mono">Live link · awaiting asset</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem">
+    <div class="wrap grid">
+      <p class="mono tick">02 / The problem</p>
+      <div class="col">
+        <h2 class="display">Your agency sent reports. Ask them what they built.</h2>
+        <p class="lede">You paid for the dashboards, the monthly call and the deck nobody opened. A year in, the work is still being done by hand — now with better graphs on top of it.</p>
+        <div class="versus">
+          <div class="vs-col">
+            <h3>An agency</h3>
+            <ul>
+              <li>Rents you a service</li>
+              <li>Keeps the keys</li>
+              <li>Bills for hours and meetings</li>
+              <li>Is measured on what it reported</li>
+              <li>Is designed never to end</li>
+            </ul>
+          </div>
+          <div class="vs-col us">
+            <h3>Us</h3>
+            <ul>
+              <li>Builds a system you own</li>
+              <li>Hands over the keys</li>
+              <li>Fixed installation, then a license</li>
+              <li>Is measured on what it shipped</li>
+              <li>Is designed to end</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="method">
+    <div class="wrap grid">
+      <p class="mono tick">03 / Method</p>
+      <div class="col">
+        <h2 class="display">Map. Build. Hand over.</h2>
+        <p class="lede">Three steps, in order, every time. The third one is where every other firm you've hired refused to stop.</p>
+        <div class="steps">
+          <div class="step">
+            <span class="idx">01</span>
+            <h3>Map</h3>
+            <p>We find where manual work eats the week — who does it, how often, and what it blocks. You get a clear picture of what can be removed and what it's costing you right now.</p>
+            <p class="mono out">Output: the map</p>
+          </div>
+          <div class="step">
+            <span class="idx">02</span>
+            <h3>Build</h3>
+            <p>We build the system and install it inside your business. Not a recommendation, not a roadmap, not a pilot deck. A working machine doing the job.</p>
+            <p class="mono out">Output: the machine</p>
+          </div>
+          <div class="step">
+            <span class="idx">03</span>
+            <h3>Hand over</h3>
+            <p>We train your team, hand over the documentation, and leave. Your people run it. Nobody has to call us to change a setting.</p>
+            <p class="mono out">Output: the keys</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="handover">
+    <div class="wrap grid">
+      <p class="mono tick">04 / The handover</p>
+      <div class="col">
+        <h2 class="display">You keep the machine. You don't keep us.</h2>
+        <p class="lede">The build is a fixed project with a fixed price. After that you pay a license while you use the system — it stays maintained, patched and improved. Cancel whenever you like. Nothing is held hostage, because a machine you can't walk away from isn't a machine you own.</p>
+        <p class="lede">That's not generosity. It's the only arrangement that forces us to build something that actually works.</p>
+        <p><span class="stamp">We make ourselves unnecessary</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="built-for">
+    <div class="wrap grid">
+      <p class="mono tick">05 / Built for</p>
+      <div class="col">
+        <h2 class="display">Manual work doesn't care what industry you're in.</h2>
+        <p class="lede">The same machine that stops a retailer retyping supplier prices stops a firm rebuilding the same report every Monday. We build for companies where the people doing the repetitive work are the people you can least afford to waste.</p>
+        <p class="lede" style="color:var(--ink-soft)">If your worst job is stranger than that, send it anyway. Strange jobs are the interesting ones.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="who">
+    <div class="wrap grid">
+      <p class="mono tick">06 / Who</p>
+      <div class="col">
+        <h2 class="display">Three people. No account managers.</h2>
+        <p class="lede">You talk to whoever is building your machine. There is no layer between you and the work, because there aren't enough of us to build one.</p>
+        <div class="people">
+          <div class="person"><div class="face"></div><h3>[ Name ]</h3><p class="mono">Role · awaiting detail</p></div>
+          <div class="person"><div class="face"></div><h3>[ Name ]</h3><p class="mono">Role · awaiting detail</p></div>
+          <div class="person"><div class="face"></div><h3>[ Name ]</h3><p class="mono">Role · awaiting detail</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="worst-job">
+    <div class="wrap close">
+      <p class="mono" style="color:var(--ink-soft)">07 / The ask</p>
+      <h2 class="display">What's the worst job in your company?</h2>
+      <p class="lede">Describe the most tedious recurring task you have — the one everybody avoids. We'll send back a single page: the machine we'd build, what it would take off your team, and what it would cost to install. Free, and the sketch is yours either way.</p>
+      <a class="btn lg" href="#worst-job">Send us your worst manual job →</a>
+      <p class="mono" style="color:var(--ink-soft)">Installation from [ set price ] · License [ set price ] / month · Cancel any time</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="mono">[ name ]</span>
+    <span class="mono">We make ourselves unnecessary</span>
+    <span class="mono sep"><a href="#worst-job">Privacy</a></span>
+    <span class="mono"><a href="#worst-job">Terms</a></span>
+  </div>
+</footer>
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  if(!b||!m)return;
+  b.addEventListener('click',function(){
+    var open=b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded',String(!open));m.hidden=open;
+  });
+  m.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){b.setAttribute('aria-expanded','false');m.hidden=true;}
+  });
+})();
+</script>
