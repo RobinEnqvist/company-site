@@ -2,9 +2,10 @@
 
 Homepage for the company. Work in progress — unlisted (noindex), reachable by URL only.
 
-- `src/homepage.html` — the page source (edit this)
+- `src/homepage.html` — Swedish source (edit this)
+- `src/homepage.en.html` — English source (edit this)
 - `build.mjs` — wraps the source in a full document and writes `index.html`
-- `index.html` — the published page (never edit by hand)
+- `index.html`, `en/index.html` — the published pages (never edit by hand)
 
 ## Rebuild after editing
 

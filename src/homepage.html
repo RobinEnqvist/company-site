@@ -89,6 +89,8 @@ header{border-bottom:1px solid var(--rule)}
 .topnav a{color:var(--ink-mid);text-decoration:none;font-size:13px;font-weight:500;padding:4px 0;border-bottom:1px solid transparent}
 .topnav a:hover,.topnav a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
 .bar .btn{margin-left:auto}
+.lang{color:var(--ink);text-decoration:none;font-size:12px;padding:8px 2px;border-bottom:1px solid var(--ink);flex:none}
+.lang:hover,.lang:focus-visible{color:var(--ink-mid);border-bottom-color:var(--ink-mid)}
 @media (min-width:760px){.topnav{display:flex}.bar .btn{margin-left:0}.burger{display:none}}
 .burger{
   flex:none;width:44px;height:44px;margin-right:-10px;
@@ -132,6 +134,7 @@ section{border-bottom:1px solid var(--rule)}
 /* ---------- hero ---------- */
 .hero{padding-block:74px 64px;display:flex;flex-direction:column;gap:34px}
 .hero h1{font-size:clamp(38px,7vw,82px);max-width:16ch}
+.sub{font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(20px,2.6vw,28px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);max-width:24ch;margin:0}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
 .cta-note{color:var(--ink-soft);font-size:13px;max-width:34ch;line-height:1.45}
 
@@ -251,6 +254,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
       <a href="#fragor">Vanliga frågor</a>
     </nav>
     <a class="btn" href="#boka">Boka en pilot-batch</a>
+    <a class="lang mono" href="en/" hreflang="en" lang="en">EN</a>
     <button class="burger" id="burger" aria-label="Meny" aria-expanded="false" aria-controls="menu">
       <span></span><span></span><span></span>
     </button>
@@ -269,11 +273,12 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
   <section>
     <div class="wrap hero">
-      <h1 class="display">Byrån sätter strategin. Wers kör resten.</h1>
-      <p class="lede">Ni skriver hypotesen. Vi levererar 20 videoannonser och svaret på om den stämde. Sen nästa.</p>
+      <h1 class="display">20 videoannonser och ett svar. Varannan vecka.</h1>
+      <p class="sub">Byrån sätter strategin. Wers kör resten.</p>
+      <p class="lede">Ni skriver hypotesen. Vi levererar batchen och svaret på om den stämde. Sen nästa.</p>
       <div class="cta-row">
         <a class="btn lg" href="#boka">Boka en pilot-batch</a>
-        <p class="cta-note">För performance-byråer med e-handelskunder på Meta och TikTok.</p>
+        <p class="cta-note">För performance-byråer med e-handelskunder på Meta och TikTok. Svar inom en arbetsdag.</p>
       </div>
     </div>
   </section>
@@ -443,7 +448,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
         <label><span class="mono">Kund (eller bransch om ni inte vill namnge)</span><input name="kund" type="text" required></label>
         <label><span class="mono">Hypotesen i en mening</span><textarea name="hypotes" required></textarea></label>
         <label><span class="mono">E-post</span><input name="epost" type="email" required autocomplete="email"></label>
-        <button class="btn lg" type="submit">Skicka</button>
+        <button class="btn lg" type="submit">Boka pilot-batchen</button>
         <p class="mono trust">Pilot till självkostnad · Uppsägningsbart månadsvis · Ni godkänner innan något går ut</p>
         <p class="alt">Eller maila direkt: <a href="mailto:hej@wers.co">hej@wers.co</a></p>
       </form>
