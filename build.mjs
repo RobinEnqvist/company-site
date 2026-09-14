@@ -5,7 +5,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 const src = readFileSync("src/homepage.html", "utf8");
 const cut = src.indexOf("</style>") + "</style>".length;
 const page =
-  `<!doctype html><html lang="en"><head><meta charset="utf-8">\n` +
+  `<!doctype html><html lang="sv"><head><meta charset="utf-8">\n` +
   `<meta name="viewport" content="width=device-width,initial-scale=1">\n` +
   `<meta name="robots" content="noindex,nofollow">\n` +
   `<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n` +

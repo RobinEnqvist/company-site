@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
+<!doctype html><html lang="sv"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -62,9 +62,8 @@ body{
 .display{
   font-family:Archivo,"Arial Narrow",system-ui,sans-serif;
   font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:-.028em;
-  line-height:.92;
+  letter-spacing:-.022em;
+  line-height:.96;
   text-wrap:balance;
   margin:0;
 }
@@ -105,7 +104,7 @@ header{border-bottom:1px solid var(--rule)}
 .menu-in{display:flex;flex-direction:column;padding:8px 28px 18px}
 .menu a{
   color:var(--ink);text-decoration:none;
-  font-family:Archivo,sans-serif;font-weight:800;text-transform:uppercase;
+  font-family:Archivo,sans-serif;font-weight:800;
   font-size:22px;letter-spacing:-.01em;padding:12px 0;
   border-bottom:1px solid var(--rule);
 }
@@ -116,7 +115,7 @@ header{border-bottom:1px solid var(--rule)}
   font-family:Archivo,sans-serif;font-weight:800;text-transform:uppercase;
   letter-spacing:.02em;font-size:13px;line-height:1;
   padding:13px 18px;text-decoration:none;border:1px solid var(--rule-hard);
-  transition:transform .12s ease;
+  transition:transform .12s ease;cursor:pointer;
 }
 .btn:hover,.btn:focus-visible{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--rule-hard)}
 .btn.lg{font-size:16px;padding:19px 26px}
@@ -132,74 +131,43 @@ section{border-bottom:1px solid var(--rule)}
 
 /* ---------- hero ---------- */
 .hero{padding:74px 0 64px;display:flex;flex-direction:column;gap:34px}
-.hero h1{font-size:clamp(38px,7.4vw,86px);max-width:15ch}
-.spec{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--ink-soft)}
-.spec b{color:var(--ink);font-weight:500}
-
-/* strike list */
-.jobs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;max-width:42ch}
-.jobs li{
-  position:relative;display:inline-block;width:fit-content;
-  font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1.45;
-  color:var(--ink-mid);padding-right:2px;
-}
-.jobs li::after{
-  content:"";position:absolute;left:0;right:0;top:52%;height:2px;
-  background:var(--ink);transform:scaleX(0);transform-origin:left center;
-  animation:strike .42s cubic-bezier(.6,0,.2,1) forwards;
-}
-.jobs li:nth-child(1)::after{animation-delay:.45s}
-.jobs li:nth-child(2)::after{animation-delay:.75s}
-.jobs li:nth-child(3)::after{animation-delay:1.05s}
-.jobs li:nth-child(4)::after{animation-delay:1.35s}
-.jobs li:nth-child(5)::after{animation-delay:1.65s}
-@keyframes strike{to{transform:scaleX(1)}}
-@media (prefers-reduced-motion:reduce){
-  .jobs li::after{animation:none;transform:scaleX(1)}
-  .btn{transition:none}
-}
+.hero h1{font-size:clamp(38px,7vw,82px);max-width:16ch}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
-.cta-note{color:var(--ink-soft);font-size:13px;max-width:30ch;line-height:1.45}
+.cta-note{color:var(--ink-soft);font-size:13px;max-width:34ch;line-height:1.45}
 
 /* ---------- headings ---------- */
-h2{font-size:clamp(27px,3.6vw,42px);max-width:19ch}
+h2{font-size:clamp(27px,3.6vw,42px);max-width:20ch}
 h3{
-  font-family:Archivo,sans-serif;font-weight:800;text-transform:uppercase;
+  font-family:Archivo,sans-serif;font-weight:800;
   letter-spacing:-.01em;font-size:17px;margin:0;line-height:1.15;
 }
 
-/* ---------- work slots ---------- */
-.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:14px}
-.slot{
-  aspect-ratio:16/10;border:1px solid var(--rule);background:var(--slot);
-  background-image:repeating-linear-gradient(45deg,transparent 0 9px,var(--hatch) 9px 10px);
-  display:flex;flex-direction:column;justify-content:flex-end;padding:14px;gap:3px;
-}
-.slot .mono{color:var(--ink-soft)}
-.slot .n{font-family:Archivo,sans-serif;font-weight:900;font-size:15px;color:var(--ink-mid)}
+/* ---------- chain ---------- */
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding:18px 0;border-top:1px solid var(--rule-hard);border-bottom:1px solid var(--rule)}
+.chain .node{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule-hard);padding:9px 13px;white-space:nowrap}
+.chain .arrow{color:var(--ink-soft);font-family:"IBM Plex Mono",monospace}
 
-/* ---------- them / us ---------- */
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0}
+.step{padding:22px 22px 24px;display:flex;flex-direction:column;gap:11px}
+.step + .step{border-left:1px solid var(--rule)}
+.step .idx{font-family:Archivo,sans-serif;font-weight:900;font-size:34px;line-height:1;color:var(--ink)}
+.step p{font-size:14.5px;color:var(--ink-mid);line-height:1.5}
+
+/* ---------- two-column lists ---------- */
 .versus{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border:1px solid var(--rule)}
 .vs-col{padding:22px}
 .vs-col + .vs-col{border-left:1px solid var(--rule)}
 .vs-col h3{margin-bottom:16px}
 .vs-col.us{background:var(--panel)}
 .vs-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
-.vs-col li{font-size:14.5px;line-height:1.4;color:var(--ink-mid);padding-left:20px;position:relative}
+.vs-col li{font-size:14.5px;line-height:1.4;color:var(--ink);padding-left:20px;position:relative}
 .vs-col li::before{
-  content:"—";position:absolute;left:0;top:0;color:var(--ink-soft);
+  content:"+";position:absolute;left:0;top:0;color:var(--ink);
   font-family:"IBM Plex Mono",monospace;
 }
-.vs-col.us li::before{content:"+";color:var(--ink)}
-.vs-col.us li{color:var(--ink)}
-
-/* ---------- steps ---------- */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;border-top:1px solid var(--rule-hard)}
-.step{padding:22px 22px 24px;display:flex;flex-direction:column;gap:11px}
-.step + .step{border-left:1px solid var(--rule)}
-.step .idx{font-family:Archivo,sans-serif;font-weight:900;font-size:34px;line-height:1;color:var(--ink)}
-.step p{font-size:14.5px;color:var(--ink-mid);line-height:1.5}
-.step .out{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule);color:var(--ink-soft)}
+.vs-col.not li{color:var(--ink-mid)}
+.vs-col.not li::before{content:"—";color:var(--ink-soft)}
 
 /* ---------- stamp ---------- */
 .stamp{
@@ -210,18 +178,38 @@ h3{
   transform:rotate(-1.4deg);
 }
 
-/* ---------- people ---------- */
-.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
-.person{border:1px solid var(--rule);background:var(--panel);padding:16px;display:flex;flex-direction:column;gap:9px}
-.face{
-  aspect-ratio:1;border:1px solid var(--rule);
-  background-image:repeating-linear-gradient(45deg,transparent 0 9px,var(--hatch) 9px 10px);
+/* ---------- pricing ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule)}
+table.price{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;min-width:520px}
+.price th,.price td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--rule);font-size:15px;vertical-align:top}
+.price th{font-family:Archivo,sans-serif;font-weight:800;font-size:16px}
+.price thead th{background:var(--panel)}
+.price tbody th{font-family:"IBM Plex Sans",sans-serif;font-weight:500;color:var(--ink-mid);width:34%}
+.price tbody tr:last-child th,.price tbody tr:last-child td{border-bottom:0}
+.price tr.total td{font-family:Archivo,sans-serif;font-weight:900;font-size:19px;white-space:nowrap}
+.fine{color:var(--ink-soft);font-size:14px;max-width:60ch;line-height:1.5}
+
+/* ---------- faq ---------- */
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--rule-hard)}
+.faq div{padding:20px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.faq p{font-size:15px;color:var(--ink-mid);line-height:1.55;max-width:62ch}
+@media (min-width:760px){.faq div{grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:0 32px}}
+
+/* ---------- form ---------- */
+.form{display:flex;flex-direction:column;gap:18px;max-width:560px;width:100%}
+.form label{display:flex;flex-direction:column;gap:8px;color:var(--ink-soft)}
+.form input,.form textarea{
+  font:inherit;font-family:"IBM Plex Sans",sans-serif;font-size:16px;color:var(--ink);
+  background:transparent;border:1px solid var(--rule);padding:13px 14px;outline:none;
+  letter-spacing:0;text-transform:none;width:100%;
 }
-.person .mono{color:var(--ink-soft)}
+.form textarea{min-height:88px;resize:vertical}
+.form input:focus,.form textarea:focus{border-color:var(--ink)}
+.form .btn{align-self:flex-start;margin-top:4px}
 
 /* ---------- closing ---------- */
 .close{padding:86px 0 96px;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
-.close h2{font-size:clamp(30px,5.2vw,58px)}
+.close h2{font-size:clamp(30px,5vw,56px)}
 
 footer{border-top:1px solid var(--rule);padding:26px 0 44px}
 .foot{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:baseline;color:var(--ink-soft)}
@@ -230,6 +218,7 @@ footer{border-top:1px solid var(--rule);padding:26px 0 44px}
 .foot .sep{margin-left:auto}
 
 a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
 
 @media (max-width:760px){
   .grid{grid-template-columns:1fr;gap:18px;padding:54px 0}
@@ -244,20 +233,18 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
 <header>
   <div class="wrap bar">
-    <a class="mark" href="#top">
-      <span class="word">Wers</span>
-    </a>
-    <a class="btn" href="#worst-job">Send us your worst job</a>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+    <a class="mark" href="#top"><span class="word">Wers</span></a>
+    <a class="btn" href="#boka">Boka en pilot-batch</a>
+    <button class="burger" id="burger" aria-label="Meny" aria-expanded="false" aria-controls="menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <nav class="menu" id="menu" hidden>
     <div class="wrap menu-in">
-      <a href="#work">Work</a>
-      <a href="#method">How it works</a>
-      <a href="#built-for">Built for</a>
-      <a href="#who">Who we are</a>
+      <a href="#sa-funkar-det">Så funkar det</a>
+      <a href="#vad-ni-far">Vad ni får</a>
+      <a href="#pris">Pris</a>
+      <a href="#fragor">Vanliga frågor</a>
     </div>
   </nav>
 </header>
@@ -266,150 +253,177 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
   <section>
     <div class="wrap hero">
-      <p class="mono" style="color:var(--ink-soft)">Installation + license · No retainers · Cancel any time</p>
-
-      <h1 class="display">Tell us the worst job in your company. We'll delete it.</h1>
-
-      <ul class="jobs">
-        <li>Copying order data between two systems</li>
-        <li>Rewriting the same follow-up email</li>
-        <li>Rebuilding Monday's report by hand</li>
-        <li>Retyping supplier prices into the catalogue</li>
-        <li>Chasing three people for one approval</li>
-      </ul>
-
-      <p class="lede">Somewhere in your business, good people are doing the same task by hand for the hundredth time. Send us that job. We'll show you the machine that ends it — then we hand you the keys and leave.</p>
-
+      <h1 class="display">Byrån sätter strategin. Wers kör resten.</h1>
+      <p class="lede">Ni skriver hypotesen. Vi levererar 20 videoannonser och svaret på om den stämde. Sen nästa.</p>
       <div class="cta-row">
-        <a class="btn lg" href="#worst-job">Send us your worst manual job →</a>
-        <p class="cta-note">Free. One page back: what we'd build, and what it takes off your team.</p>
+        <a class="btn lg" href="#boka">Boka en pilot-batch</a>
+        <p class="cta-note">För performance-byråer med e-handelskunder på Meta och TikTok.</p>
       </div>
     </div>
   </section>
 
-  <section id="work">
+  <section id="problemet">
     <div class="wrap grid">
-      <p class="mono tick">01 / Work</p>
+      <p class="mono tick">02 / Problemet</p>
       <div class="col">
-        <h2 class="display">Don't take our word. Watch the machine run.</h2>
-        <p class="lede">Every case answers the same six questions: the job, what it cost, the machine we built, the handover, the footage, the live link. No logo bars. No invented numbers. If we can't show it, we don't claim it.</p>
-        <div class="slots">
-          <div class="slot"><span class="n">01</span><span class="mono">Case film · awaiting asset</span></div>
-          <div class="slot"><span class="n">02</span><span class="mono">Screen recording · awaiting asset</span></div>
-          <div class="slot"><span class="n">03</span><span class="mono">Campaign stills · awaiting asset</span></div>
-          <div class="slot"><span class="n">04</span><span class="mono">Live link · awaiting asset</span></div>
+        <h2 class="display">Paid social kräver volym. Ingen har en motor för det.</h2>
+        <p class="lede">Performance-byråer tackar idag nej till betalande kunder. Inte för att kunden är fel – produkten är bra, brandet starkt, teamet smart – utan för att ingen kan producera annonser i den takt kontot kräver.</p>
+        <p class="lede">Byrån kan analysera, styra och säga exakt vad som behöver göras. Men byrån vill inte vara den kreativa motorn. Kunden klarar det inte. Och fem godkända annonser i kvartalet räcker inte längre.</p>
+        <p><span class="stamp">Det är gapet Wers fyller.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sa-funkar-det">
+    <div class="wrap grid">
+      <p class="mono tick">03 / Så funkar det</p>
+      <div class="col">
+        <h2 class="display">En hypotes in. Tjugo annonser och ett svar ut.</h2>
+        <div class="chain" aria-label="Loopen">
+          <span class="node">Hypotes</span><span class="arrow">→</span>
+          <span class="node">Batch</span><span class="arrow">→</span>
+          <span class="node">Kontodata</span><span class="arrow">→</span>
+          <span class="node">Rapport</span><span class="arrow">→</span>
+          <span class="node">Nästa hypotes</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="problem">
-    <div class="wrap grid">
-      <p class="mono tick">02 / The problem</p>
-      <div class="col">
-        <h2 class="display">Your agency sent reports. Ask them what they built.</h2>
-        <p class="lede">You paid for the dashboards, the monthly call and the deck nobody opened. A year in, the work is still being done by hand — now with better graphs on top of it.</p>
-        <div class="versus">
-          <div class="vs-col">
-            <h3>An agency</h3>
-            <ul>
-              <li>Rents you a service</li>
-              <li>Keeps the keys</li>
-              <li>Bills for hours and meetings</li>
-              <li>Is measured on what it reported</li>
-              <li>Is designed never to end</li>
-            </ul>
-          </div>
-          <div class="vs-col us">
-            <h3>Us</h3>
-            <ul>
-              <li>Builds a system you own</li>
-              <li>Hands over the keys</li>
-              <li>Fixed installation, then a license</li>
-              <li>Is measured on what it shipped</li>
-              <li>Is designed to end</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="method">
-    <div class="wrap grid">
-      <p class="mono tick">03 / Method</p>
-      <div class="col">
-        <h2 class="display">Map. Build. Hand over.</h2>
-        <p class="lede">Three steps, in order, every time. The third one is where every other firm you've hired refused to stop.</p>
         <div class="steps">
           <div class="step">
-            <span class="idx">01</span>
-            <h3>Map</h3>
-            <p>We find where manual work eats the week — who does it, how often, and what it blocks. You get a clear picture of what can be removed and what it's costing you right now.</p>
-            <p class="mono out">Output: the map</p>
+            <span class="idx">1</span>
+            <h3>Ni briefar</h3>
+            <p>En sida. Vinkel, målgrupp, vad ni vill lära er, hur ni mäter. Vårt brief-format gör det på 15 minuter.</p>
           </div>
           <div class="step">
-            <span class="idx">02</span>
-            <h3>Build</h3>
-            <p>We build the system and install it inside your business. Not a recommendation, not a roadmap, not a pilot deck. A working machine doing the job.</p>
-            <p class="mono out">Output: the machine</p>
+            <span class="idx">2</span>
+            <h3>Vi levererar batchen</h3>
+            <p>20 korta videoannonser mot er hypotes. UGC, produkt-demo, klippta varianter. 9:16 och 4:5, 15 och 30 sekunder. Ni godkänner innan något går ut.</p>
           </div>
           <div class="step">
-            <span class="idx">03</span>
-            <h3>Hand over</h3>
-            <p>We train your team, hand over the documentation, and leave. Your people run it. Nobody has to call us to change a setting.</p>
-            <p class="mono out">Output: the keys</p>
+            <span class="idx">3</span>
+            <h3>Kontot testar</h3>
+            <p>Batchen körs i ert konto, med er budget, på era villkor.</p>
+          </div>
+          <div class="step">
+            <span class="idx">4</span>
+            <h3>Vi läser tillbaka</h3>
+            <p>Varje annons mäts mot tröskeln ni satte. Vad vann, vad floppade, varför.</p>
+          </div>
+          <div class="step">
+            <span class="idx">5</span>
+            <h3>Ni får nästa fråga</h3>
+            <p>Rapporten slutar med ett förslag på nästa hypotes. Ni skriver nästa brief. Loopen fortsätter.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="handover">
+  <section id="olika-kunder">
     <div class="wrap grid">
-      <p class="mono tick">04 / The handover</p>
+      <p class="mono tick">04 / Olika kunder</p>
       <div class="col">
-        <h2 class="display">You keep the machine. You don't keep us.</h2>
-        <p class="lede">The build is a fixed project with a fixed price. After that you pay a license while you use the system — it stays maintained, patched and improved. Cancel whenever you like. Nothing is held hostage, because a machine you can't walk away from isn't a machine you own.</p>
-        <p class="lede">That's not generosity. It's the only arrangement that forces us to build something that actually works.</p>
-        <p><span class="stamp">We make ourselves unnecessary</span></p>
+        <h2 class="display">Fungerar det när kunderna inte är lika?</h2>
+        <p class="lede">Ja. Det är det systemet är byggt för.</p>
+        <p class="lede">Varje kund har sin egen identitet i Wers: tonalitet, regler, vad som får sägas och inte, vad som testats förut och vad som vann. Tio kunder är tio briefar och tio loggar – inte tio gånger jobbet.</p>
+        <p class="lede">Det som skaver i vanlig produktion är att varje kund är ett nytt projekt från noll. Hos oss är varje kund en konfiguration, och varje batch bygger på förra.</p>
       </div>
     </div>
   </section>
 
-  <section id="built-for">
+  <section id="vad-ni-far">
     <div class="wrap grid">
-      <p class="mono tick">05 / Built for</p>
+      <p class="mono tick">05 / Vad ni får</p>
       <div class="col">
-        <h2 class="display">Manual work doesn't care what industry you're in.</h2>
-        <p class="lede">The same machine that stops a retailer retyping supplier prices stops a firm rebuilding the same report every Monday. We build for companies where the people doing the repetitive work are the people you can least afford to waste.</p>
-        <p class="lede" style="color:var(--ink-soft)">If your worst job is stranger than that, send it anyway. Strange jobs are the interesting ones.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="who">
-    <div class="wrap grid">
-      <p class="mono tick">06 / Who</p>
-      <div class="col">
-        <h2 class="display">Three people. No account managers.</h2>
-        <p class="lede">You talk to whoever is building your machine. There is no layer between you and the work, because there aren't enough of us to build one.</p>
-        <div class="people">
-          <div class="person"><div class="face"></div><h3>[ Name ]</h3><p class="mono">Role · awaiting detail</p></div>
-          <div class="person"><div class="face"></div><h3>[ Name ]</h3><p class="mono">Role · awaiting detail</p></div>
-          <div class="person"><div class="face"></div><h3>[ Name ]</h3><p class="mono">Role · awaiting detail</p></div>
+        <h2 class="display">Vad ni får – och inte</h2>
+        <div class="versus">
+          <div class="vs-col us">
+            <h3>Ni får</h3>
+            <ul>
+              <li>20 videoannonser per batch, två batchar i månaden</li>
+              <li>En rapport per batch som svarar på er hypotes med kontots data</li>
+              <li>Brief-formatet, så att ni kan beställa rätt från dag ett</li>
+              <li>Godkännande innan publicering, alltid</li>
+              <li>En logg per kund över vad som testats och vad som vann</li>
+            </ul>
+          </div>
+          <div class="vs-col not">
+            <h3>Ni får inte</h3>
+            <ul>
+              <li>Strategi. Den är er.</li>
+              <li>Mediaköp. Det är ert.</li>
+              <li>En byrå till. Vi sitter bakom er, inte bredvid.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="worst-job">
+  <section id="brief">
+    <div class="wrap grid">
+      <p class="mono tick">06 / Brief-formatet</p>
+      <div class="col">
+        <h2 class="display">Så beställer ni en batch</h2>
+        <p class="lede">En sida. Hypotes, vad ni vill lära er, vinkel, målgrupp, format, hooks, vad ni redan vet, erbjudande, och hur batchen mäts.</p>
+        <p class="lede">Saknas hypotes eller mått skickas briefen tillbaka. Utan dem går batchen inte att utvärdera – och då är den bara innehåll.</p>
+        <p><a class="btn" href="wers-brief.pdf">Ladda ner brief-formatet (PDF)</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pris">
+    <div class="wrap grid">
+      <p class="mono tick">07 / Pris</p>
+      <div class="col">
+        <h2 class="display">Fast pris per volym. Uppsägningsbart månadsvis.</h2>
+        <div class="tablewrap">
+          <table class="price">
+            <thead>
+              <tr><th scope="col"></th><th scope="col">Start</th><th scope="col">Tempo</th><th scope="col">Volym</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Annonser per månad</th><td>20</td><td>40</td><td>80</td></tr>
+              <tr><th scope="row">Batchar per månad</th><td>2</td><td>4</td><td>8</td></tr>
+              <tr><th scope="row">Rapport per batch</th><td>Ja</td><td>Ja</td><td>Ja</td></tr>
+              <tr class="total"><th scope="row">Pris per månad</th><td>29 900 kr</td><td>49 900 kr</td><td>84 900 kr</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fine">Priserna gäller per kundkonto. Byrån fakturerar sin kund som vanligt. Provider-kostnader för produktion ingår.</p>
+        <p class="lede">Första batchen kör vi som pilot. Ni betalar självkostnad, vi får er ärliga feedback.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="fragor">
+    <div class="wrap grid">
+      <p class="mono tick">08 / Vanliga frågor</p>
+      <div class="col">
+        <h2 class="display">Vanliga frågor</h2>
+        <div class="faq">
+          <div><h3>Är ni ett produktionsbolag?</h3><p>Nej. Ett produktionsbolag levererar filer. Vi levererar svaret på frågan ni ställde, och nästa fråga.</p></div>
+          <div><h3>Är ni ett AI-verktyg?</h3><p>Nej. Vi använder dem – flera, och vi byter när det kommer bättre. Ni behöver inte lära er något verktyg. Ni skriver en brief.</p></div>
+          <div><h3>Vad händer om batchen går dåligt?</h3><p>Då har den besvarat hypotesen. En batch som visar att en vinkel inte fungerar är en lyckad batch – ni slapp lägga tre veckor på att polera den.</p></div>
+          <div><h3>Vem äger materialet?</h3><p>Er kund. Alltid. Vi ber om rätt att visa anonymiserade resultat som case, men det avtalas separat.</p></div>
+          <div><h3>Behöver ni tillgång till annonskontot?</h3><p>Läsrättighet, ja. Utan kontodata finns ingen rapport och ingen nästa hypotes.</p></div>
+          <div><h3>Vilka kanaler?</h3><p>Meta och TikTok. Kort video. Inget annat just nu.</p></div>
+          <div><h3>Vilka kunder passar?</h3><p>E-handel med löpande paid social-budget. Andra branscher tar vi in i takt med att vi lär oss dem – fråga.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="boka">
     <div class="wrap close">
-      <p class="mono" style="color:var(--ink-soft)">07 / The ask</p>
-      <h2 class="display">What's the worst job in your company?</h2>
-      <p class="lede">Describe the most tedious recurring task you have — the one everybody avoids. We'll send back a single page: the machine we'd build, what it would take off your team, and what it would cost to install. Free, and the sketch is yours either way.</p>
-      <a class="btn lg" href="#worst-job">Send us your worst manual job →</a>
-      <p class="mono" style="color:var(--ink-soft)">Installation from [ set price ] · License [ set price ] / month · Cancel any time</p>
+      <p class="mono" style="color:var(--ink-soft)">09 / Boka en pilot-batch</p>
+      <h2 class="display">Vilken kund tackade ni senast nej till?</h2>
+      <p class="lede">Skriv tre rader. Vi svarar inom en arbetsdag.</p>
+      <form class="form" id="pilot" data-to="hej@wersworks.com">
+        <label><span class="mono">Byrå</span><input name="byra" type="text" required autocomplete="organization"></label>
+        <label><span class="mono">Kund (eller bransch om ni inte vill namnge)</span><input name="kund" type="text" required></label>
+        <label><span class="mono">Hypotesen i en mening</span><textarea name="hypotes" required></textarea></label>
+        <label><span class="mono">E-post</span><input name="epost" type="email" required autocomplete="email"></label>
+        <button class="btn lg" type="submit">Skicka</button>
+      </form>
     </div>
   </section>
 
@@ -418,22 +432,33 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 <footer>
   <div class="wrap foot">
     <span class="mono">Wers</span>
-    <span class="mono">We make ourselves unnecessary</span>
-    <span class="mono sep"><a href="#worst-job">Privacy</a></span>
-    <span class="mono"><a href="#worst-job">Terms</a></span>
+    <span class="mono">Byrån sätter strategin. Vi kör resten.</span>
+    <span class="mono sep"><a href="#boka">Integritet</a></span>
+    <span class="mono"><a href="#boka">Villkor</a></span>
   </div>
 </footer>
 <script>
 (function(){
   var b=document.getElementById('burger'),m=document.getElementById('menu');
-  if(!b||!m)return;
-  b.addEventListener('click',function(){
-    var open=b.getAttribute('aria-expanded')==='true';
-    b.setAttribute('aria-expanded',String(!open));m.hidden=open;
-  });
-  m.addEventListener('click',function(e){
-    if(e.target.tagName==='A'){b.setAttribute('aria-expanded','false');m.hidden=true;}
-  });
+  if(b&&m){
+    b.addEventListener('click',function(){
+      var open=b.getAttribute('aria-expanded')==='true';
+      b.setAttribute('aria-expanded',String(!open));m.hidden=open;
+    });
+    m.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){b.setAttribute('aria-expanded','false');m.hidden=true;}
+    });
+  }
+  var f=document.getElementById('pilot');
+  if(f){
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var d=new FormData(f);
+      var body=['Byrå: '+d.get('byra'),'Kund: '+d.get('kund'),'','Hypotes:',d.get('hypotes'),'','Svara till: '+d.get('epost')].join('\n');
+      var subject='Pilot-batch – '+d.get('byra');
+      location.href='mailto:'+f.dataset.to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    });
+  }
 })();
 </script>
 </body></html>
