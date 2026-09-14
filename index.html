@@ -89,7 +89,11 @@ header{border-bottom:1px solid var(--rule)}
 }
 .mark .word{font-size:20px;letter-spacing:.06em}
 .mark{display:inline-flex;align-items:center;gap:10px}
+.topnav{display:none;gap:22px;margin-left:auto}
+.topnav a{color:var(--ink-mid);text-decoration:none;font-size:13px;font-weight:500;padding:4px 0;border-bottom:1px solid transparent}
+.topnav a:hover,.topnav a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
 .bar .btn{margin-left:auto}
+@media (min-width:760px){.topnav{display:flex}.bar .btn{margin-left:0}.burger{display:none}}
 .burger{
   flex:none;width:44px;height:44px;margin-right:-10px;
   background:none;border:0;cursor:pointer;padding:0;
@@ -148,11 +152,15 @@ h3{
 .chain .arrow{color:var(--ink-soft);font-family:"IBM Plex Mono",monospace}
 
 /* ---------- steps ---------- */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0}
-.step{padding:22px 22px 24px;display:flex;flex-direction:column;gap:11px}
-.step + .step{border-left:1px solid var(--rule)}
-.step .idx{font-family:Archivo,sans-serif;font-weight:900;font-size:34px;line-height:1;color:var(--ink)}
-.step p{font-size:14.5px;color:var(--ink-mid);line-height:1.5}
+.steps{display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:3rem minmax(0,1fr);gap:6px 18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.step .idx{grid-row:1 / span 2;font-family:Archivo,sans-serif;font-weight:900;font-size:34px;line-height:1;color:var(--ink)}
+.step p{font-size:15px;color:var(--ink-mid);line-height:1.5;max-width:60ch}
+.step .batch,.step .batch-note{grid-column:2}
+.batch{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-top:14px}
+.batch span{aspect-ratio:9/16;border:1px solid var(--rule);background:var(--slot);background-image:repeating-linear-gradient(45deg,transparent 0 6px,var(--hatch) 6px 7px);display:flex;align-items:flex-end;padding:4px;font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--ink-soft)}
+.batch-note{color:var(--ink-soft);margin-top:10px}
+@media (max-width:760px){.batch{grid-template-columns:repeat(5,1fr)}}
 
 /* ---------- two-column lists ---------- */
 .versus{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border:1px solid var(--rule)}
@@ -188,6 +196,9 @@ table.price{width:100%;border-collapse:collapse;font-variant-numeric:tabular-num
 .price tbody tr:last-child th,.price tbody tr:last-child td{border-bottom:0}
 .price tr.total td{font-family:Archivo,sans-serif;font-weight:900;font-size:19px;white-space:nowrap}
 .fine{color:var(--ink-soft);font-size:14px;max-width:60ch;line-height:1.5}
+.pilot{border:1px solid var(--rule-hard);background:var(--tag);padding:26px;display:flex;flex-wrap:wrap;align-items:center;gap:18px 32px}
+.pilot .lede{color:var(--tag-ink);flex:1 1 30ch}
+.pilot .btn{background:var(--ground);color:var(--ink)}
 
 /* ---------- faq ---------- */
 .faq{display:flex;flex-direction:column;border-top:1px solid var(--rule-hard)}
@@ -206,6 +217,10 @@ table.price{width:100%;border-collapse:collapse;font-variant-numeric:tabular-num
 .form textarea{min-height:88px;resize:vertical}
 .form input:focus,.form textarea:focus{border-color:var(--ink)}
 .form .btn{align-self:flex-start;margin-top:4px}
+.form .trust{color:var(--ink-soft);line-height:1.7}
+.form .alt,.sent .lede{color:var(--ink-mid);font-size:14px}
+.form .alt a,.sent a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.sent{display:flex;flex-direction:column;gap:12px;border-left:3px solid var(--tag);padding-left:18px}
 
 /* ---------- closing ---------- */
 .close{padding-block:86px 96px;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
@@ -234,6 +249,12 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 <header>
   <div class="wrap bar">
     <a class="mark" href="#top"><span class="word">Wers</span></a>
+    <nav class="topnav" aria-label="Meny">
+      <a href="#sa-funkar-det">Så funkar det</a>
+      <a href="#vad-ni-far">Vad ni får</a>
+      <a href="#pris">Pris</a>
+      <a href="#fragor">Vanliga frågor</a>
+    </nav>
     <a class="btn" href="#boka">Boka en pilot-batch</a>
     <button class="burger" id="burger" aria-label="Meny" aria-expanded="false" aria-controls="menu">
       <span></span><span></span><span></span>
@@ -264,7 +285,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
   <section id="problemet">
     <div class="wrap grid">
-      <p class="mono tick">02 / Problemet</p>
+      <p class="mono tick">Problemet</p>
       <div class="col">
         <h2 class="display">Paid social kräver volym. Ingen har en motor för det.</h2>
         <p class="lede">Performance-byråer tackar idag nej till betalande kunder. Inte för att kunden är fel – produkten är bra, brandet starkt, teamet smart – utan för att ingen kan producera annonser i den takt kontot kräver.</p>
@@ -276,7 +297,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
   <section id="sa-funkar-det">
     <div class="wrap grid">
-      <p class="mono tick">03 / Så funkar det</p>
+      <p class="mono tick">Så funkar det</p>
       <div class="col">
         <h2 class="display">En hypotes in. Tjugo annonser och ett svar ut.</h2>
         <div class="chain" aria-label="Loopen">
@@ -296,6 +317,8 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
             <span class="idx">2</span>
             <h3>Vi levererar batchen</h3>
             <p>20 korta videoannonser mot er hypotes. UGC, produkt-demo, klippta varianter. 9:16 och 4:5, 15 och 30 sekunder. Ni godkänner innan något går ut.</p>
+            <div class="batch" aria-label="Så här ser en batch ut: 20 annonser"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span></div>
+            <p class="batch-note mono">Så här ser en batch ut · Exempelannonser läggs upp efter piloten</p>
           </div>
           <div class="step">
             <span class="idx">3</span>
@@ -319,7 +342,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
   <section id="olika-kunder">
     <div class="wrap grid">
-      <p class="mono tick">04 / Olika kunder</p>
+      <p class="mono tick">Olika kunder</p>
       <div class="col">
         <h2 class="display">Fungerar det när kunderna inte är lika?</h2>
         <p class="lede">Ja. Det är det systemet är byggt för.</p>
@@ -331,7 +354,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
   <section id="vad-ni-far">
     <div class="wrap grid">
-      <p class="mono tick">05 / Vad ni får</p>
+      <p class="mono tick">Vad ni får</p>
       <div class="col">
         <h2 class="display">Vad ni får – och inte</h2>
         <div class="versus">
@@ -360,7 +383,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
   <section id="brief">
     <div class="wrap grid">
-      <p class="mono tick">06 / Brief-formatet</p>
+      <p class="mono tick">Brief-formatet</p>
       <div class="col">
         <h2 class="display">Så beställer ni en batch</h2>
         <p class="lede">En sida. Hypotes, vad ni vill lära er, vinkel, målgrupp, format, hooks, vad ni redan vet, erbjudande, och hur batchen mäts.</p>
@@ -372,7 +395,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
   <section id="pris">
     <div class="wrap grid">
-      <p class="mono tick">07 / Pris</p>
+      <p class="mono tick">Pris</p>
       <div class="col">
         <h2 class="display">Fast pris per volym. Uppsägningsbart månadsvis.</h2>
         <div class="tablewrap">
@@ -389,14 +412,17 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
           </table>
         </div>
         <p class="fine">Priserna gäller per kundkonto. Byrån fakturerar sin kund som vanligt. Provider-kostnader för produktion ingår.</p>
-        <p class="lede">Första batchen kör vi som pilot. Ni betalar självkostnad, vi får er ärliga feedback.</p>
+        <div class="pilot">
+          <p class="lede">Första batchen kör vi som pilot. Ni betalar självkostnad, vi får er ärliga feedback.</p>
+          <a class="btn lg" href="#boka">Boka en pilot-batch</a>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="fragor">
     <div class="wrap grid">
-      <p class="mono tick">08 / Vanliga frågor</p>
+      <p class="mono tick">Vanliga frågor</p>
       <div class="col">
         <h2 class="display">Vanliga frågor</h2>
         <div class="faq">
@@ -414,7 +440,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
   <section id="boka">
     <div class="wrap close">
-      <p class="mono" style="color:var(--ink-soft)">09 / Boka en pilot-batch</p>
+      <p class="mono" style="color:var(--ink-soft)">Boka en pilot-batch</p>
       <h2 class="display">Vilken kund tackade ni senast nej till?</h2>
       <p class="lede">Skriv tre rader. Vi svarar inom en arbetsdag.</p>
       <form class="form" id="pilot" data-to="hej@wers.co">
@@ -423,7 +449,13 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
         <label><span class="mono">Hypotesen i en mening</span><textarea name="hypotes" required></textarea></label>
         <label><span class="mono">E-post</span><input name="epost" type="email" required autocomplete="email"></label>
         <button class="btn lg" type="submit">Skicka</button>
+        <p class="mono trust">Pilot till självkostnad · Uppsägningsbart månadsvis · Ni godkänner innan något går ut</p>
+        <p class="alt">Eller maila direkt: <a href="mailto:hej@wers.co">hej@wers.co</a></p>
       </form>
+      <div class="sent" id="sent" hidden>
+        <h3>Din mailklient öppnas med allt ifyllt.</h3>
+        <p class="lede">Öppnades inget? Maila tre rader till <a href="mailto:hej@wers.co">hej@wers.co</a>. Vi svarar inom en arbetsdag.</p>
+      </div>
     </div>
   </section>
 
@@ -457,6 +489,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
       var body=['Byrå: '+d.get('byra'),'Kund: '+d.get('kund'),'','Hypotes:',d.get('hypotes'),'','Svara till: '+d.get('epost')].join('\n');
       var subject='Pilot-batch – '+d.get('byra');
       location.href='mailto:'+f.dataset.to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+      var s=document.getElementById('sent');if(s){s.hidden=false;s.scrollIntoView({block:'nearest'});}
     });
   }
 })();
