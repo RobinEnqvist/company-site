@@ -101,7 +101,7 @@ header{border-bottom:1px solid var(--rule)}
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .burger:focus-visible{outline:2px solid var(--tag);outline-offset:2px}
 .menu{border-top:1px solid var(--rule);background:var(--panel)}
-.menu-in{display:flex;flex-direction:column;padding:8px 28px 18px}
+.menu-in{display:flex;flex-direction:column;padding-block:8px 18px}
 .menu a{
   color:var(--ink);text-decoration:none;
   font-family:Archivo,sans-serif;font-weight:800;
@@ -124,13 +124,13 @@ header{border-bottom:1px solid var(--rule)}
 section{border-bottom:1px solid var(--rule)}
 .grid{
   display:grid;grid-template-columns:8.5rem minmax(0,1fr);
-  gap:0 40px;padding:78px 0;
+  gap:0 40px;padding-block:78px;
 }
 .tick{color:var(--ink-soft);padding-top:5px}
 .col{display:flex;flex-direction:column;gap:26px;min-width:0}
 
 /* ---------- hero ---------- */
-.hero{padding:74px 0 64px;display:flex;flex-direction:column;gap:34px}
+.hero{padding-block:74px 64px;display:flex;flex-direction:column;gap:34px}
 .hero h1{font-size:clamp(38px,7vw,82px);max-width:16ch}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
 .cta-note{color:var(--ink-soft);font-size:13px;max-width:34ch;line-height:1.45}
@@ -208,7 +208,7 @@ table.price{width:100%;border-collapse:collapse;font-variant-numeric:tabular-num
 .form .btn{align-self:flex-start;margin-top:4px}
 
 /* ---------- closing ---------- */
-.close{padding:86px 0 96px;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+.close{padding-block:86px 96px;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
 .close h2{font-size:clamp(30px,5vw,56px)}
 
 footer{border-top:1px solid var(--rule);padding:26px 0 44px}
@@ -221,9 +221,9 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 @media (prefers-reduced-motion:reduce){.btn{transition:none}}
 
 @media (max-width:760px){
-  .grid{grid-template-columns:1fr;gap:18px;padding:54px 0}
+  .grid{grid-template-columns:1fr;gap:18px;padding-block:54px}
   .tick{padding-top:0}
-  .hero{padding:48px 0 44px}
+  .hero{padding-block:48px 44px}
   .vs-col + .vs-col{border-left:none;border-top:1px solid var(--rule)}
   .step + .step{border-left:none;border-top:1px solid var(--rule)}
   .foot .sep{margin-left:0}
