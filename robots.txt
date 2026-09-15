@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://robinenqvist.github.io/company-site/sitemap.xml
