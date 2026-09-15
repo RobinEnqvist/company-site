@@ -132,7 +132,19 @@ section{border-bottom:1px solid var(--rule)}
 .col{display:flex;flex-direction:column;gap:26px;min-width:0}
 
 /* ---------- hero ---------- */
-.hero{padding-block:74px 64px;display:flex;flex-direction:column;gap:34px}
+/* dark band: header + hero keep dark tokens in both themes */
+.band{--ground:#121316;--panel:#1B1D22;--ink:#EDECE7;--ink-mid:#A8AAB2;--ink-soft:#83858D;--rule:#32343A;--rule-hard:#EDECE7;--hatch:#2A2C31;--slot:#1D1F23;background:var(--ground);color:var(--ink)}
+.hero{padding-block:64px 56px;display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:center}
+.hero-text{display:flex;flex-direction:column;gap:30px;min-width:0}
+@media (min-width:860px){.hero{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px}}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.screens{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;max-width:520px}
+.screen{margin:0;aspect-ratio:9/16;border:1px solid var(--rule-hard);background:linear-gradient(180deg,var(--panel) 0%,var(--slot) 100%);display:flex;flex-direction:column;justify-content:space-between;padding:11px;min-width:0}
+.screen.s2{transform:translateY(-24px)}
+.screen .tag{color:var(--ink-soft);font-size:9.5px;letter-spacing:.1em}
+.screen figcaption{font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(13px,1.6vw,19px);line-height:1.08;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+.strip{border-top:1px solid var(--rule);padding-block:14px;color:var(--ink-soft)}
+.strip-wrap{border-top:1px solid var(--rule)}
 .hero h1{font-size:clamp(38px,7vw,82px);max-width:16ch}
 .sub{font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(20px,2.6vw,28px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);max-width:24ch;margin:0}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
@@ -150,6 +162,18 @@ h3{
 .chain .node{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule-hard);padding:9px 13px;white-space:nowrap}
 .chain .arrow{color:var(--ink-soft);font-family:"IBM Plex Mono",monospace}
 
+
+/* loop ring (desktop) — chain stays for mobile */
+.ring{display:none;position:relative;aspect-ratio:1;max-width:520px;margin:6px 0 10px}
+.ring svg{position:absolute;inset:0;width:100%;height:100%}
+.ring .node{position:absolute;transform:translate(-50%,-50%);background:var(--ground)}
+.ring .center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(18px,2.2vw,24px);letter-spacing:-.01em;text-align:center;max-width:9ch;line-height:1.05}
+@media (min-width:760px){.ring{display:block}.chain{display:none}}
+/* pain chips */
+.pains{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pains li{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule-hard);padding:8px 12px}
+.pains li::before{content:"× ";color:var(--ink-soft)}
+
 /* ---------- steps ---------- */
 .steps{display:flex;flex-direction:column}
 .step{display:grid;grid-template-columns:3rem minmax(0,1fr);gap:6px 18px;padding:20px 0;border-bottom:1px solid var(--rule)}
@@ -157,7 +181,7 @@ h3{
 .step p{font-size:15px;color:var(--ink-mid);line-height:1.5;max-width:60ch}
 .step .batch,.step .batch-note{grid-column:2}
 .batch{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-top:14px}
-.batch span{aspect-ratio:9/16;border:1px solid var(--rule);background:var(--slot);background-image:repeating-linear-gradient(45deg,transparent 0 6px,var(--hatch) 6px 7px);display:flex;align-items:flex-end;padding:4px;font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--ink-soft)}
+.batch span{aspect-ratio:9/16;border:1px solid var(--rule);background:var(--slot);display:flex;align-items:flex-end;padding:4px;font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--ink-soft)}
 .batch-note{color:var(--ink-soft);margin-top:10px}
 @media (max-width:760px){.batch{grid-template-columns:repeat(5,1fr)}}
 
@@ -244,7 +268,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 }
 </style>
 
-<header>
+<header class="band">
   <div class="wrap bar">
     <a class="mark" href="#top"><span class="word">Wers</span></a>
     <nav class="topnav" aria-label="Meny">
@@ -271,16 +295,21 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
 
 <main id="top">
 
-  <section>
+  <section class="band">
     <div class="wrap hero">
-      <h1 class="display">20 videoannonser och ett svar. Varannan vecka.</h1>
-      <p class="sub">Byrån sätter strategin. Wers kör resten.</p>
-      <p class="lede">Ni skriver hypotesen. Vi levererar batchen och svaret på om den stämde. Sen nästa.</p>
-      <div class="cta-row">
-        <a class="btn lg" href="#boka">Boka en pilot-batch</a>
+      <div class="hero-text">
+        <h1 class="display">20 videoannonser och ett svar. Varannan vecka.</h1>
+        <p class="sub">Byrån sätter strategin. Wers kör resten.</p>
+        <p class="lede">Ni skriver hypotesen. Vi levererar batchen och svaret på om den stämde. Sen nästa.</p>
+        <div class="cta-row">
+          <a class="btn lg" href="#boka">Boka en pilot-batch</a>
+          <a class="btn ghost lg" href="#sa-funkar-det">Se hur det funkar</a>
+        </div>
         <p class="cta-note">För performance-byråer med e-handelskunder på Meta och TikTok. Svar inom en arbetsdag.</p>
       </div>
+      <div class="screens" role="img" aria-label="Tre format ur en batch"><figure class="screen s1"><span class="tag mono">UGC · 15 s · 9:16</span><figcaption>Jag trodde inte det skulle funka.</figcaption></figure><figure class="screen s2"><span class="tag mono">Produkt-demo · 30 s · 4:5</span><figcaption>Så här går det till. På riktigt.</figcaption></figure><figure class="screen s3"><span class="tag mono">Klippt variant · 15 s · 9:16</span><figcaption>Tre skäl att byta.</figcaption></figure></div>
     </div>
+    <div class="strip-wrap"><div class="wrap strip mono">Levereras till Meta och TikTok · 9:16 och 4:5 · 15 och 30 sekunder</div></div>
   </section>
 
   <section id="problemet">
@@ -290,6 +319,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
         <h2 class="display">Paid social kräver volym. Ingen har en motor för det.</h2>
         <p class="lede">Performance-byråer tackar idag nej till betalande kunder. Inte för att kunden är fel – produkten är bra, brandet starkt, teamet smart – utan för att ingen kan producera annonser i den takt kontot kräver.</p>
         <p class="lede">Byrån kan analysera, styra och säga exakt vad som behöver göras. Men byrån vill inte vara den kreativa motorn. Kunden klarar det inte. Och fem godkända annonser i kvartalet räcker inte längre.</p>
+        <ul class="pains"><li>Tackar nej till betalande kunder</li><li>Fem godkända annonser i kvartalet</li><li>Byrån vill inte vara kreativ motor</li><li>Kunden klarar det inte</li></ul>
         <p><span class="stamp">Det är gapet Wers fyller.</span></p>
       </div>
     </div>
@@ -300,6 +330,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--tag);outline-offset:3
       <p class="mono tick">Så funkar det</p>
       <div class="col">
         <h2 class="display">En hypotes in. Tjugo annonser och ett svar ut.</h2>
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 520 520" aria-hidden="true" style="color:var(--rule-hard)"><circle cx="260" cy="260" r="190" fill="none" stroke="currentColor" stroke-width="1.5"/><polygon points="-5,-6 6,0 -5,6" fill="currentColor" transform="translate(371.7 106.3) rotate(36.0)"/><polygon points="-5,-6 6,0 -5,6" fill="currentColor" transform="translate(440.7 318.7) rotate(108.0)"/><polygon points="-5,-6 6,0 -5,6" fill="currentColor" transform="translate(260.0 450.0) rotate(180.0)"/><polygon points="-5,-6 6,0 -5,6" fill="currentColor" transform="translate(79.3 318.7) rotate(252.0)"/><polygon points="-5,-6 6,0 -5,6" fill="currentColor" transform="translate(148.3 106.3) rotate(324.0)"/></svg><span class="node" style="left:50.0%;top:13.5%">Hypotes</span><span class="node" style="left:84.7%;top:38.7%">Batch</span><span class="node" style="left:71.5%;top:79.5%">Kontodata</span><span class="node" style="left:28.5%;top:79.5%">Rapport</span><span class="node" style="left:15.3%;top:38.7%">Nästa hypotes</span><span class="center">Varannan vecka</span></div>
         <div class="chain" aria-label="Loopen">
           <span class="node">Hypotes</span><span class="arrow">→</span>
           <span class="node">Batch</span><span class="arrow">→</span>
