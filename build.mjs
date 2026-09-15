@@ -31,7 +31,7 @@ const wrap = (src, { lang, index, url, description }) => {
 const sv = wrap(readFileSync("src/homepage.html", "utf8"), { lang: "sv", index: false });
 const en = wrap(readFileSync("src/homepage.en.html", "utf8"), {
   lang: "en", index: true, url: `${SITE}/en/`,
-  description: "20 video ads per batch, tested in your account, with a report on what won and the next hypothesis. The creative engine for performance agencies with e-commerce clients on Meta and TikTok.",
+  description: "Ad variants researched, validated and produced from your own account data, then a report on what won and the next hypothesis. For performance agencies with e-commerce clients on Meta and TikTok.",
 });
 mkdirSync("en", { recursive: true });
 writeFileSync("index.html", sv);
